@@ -1,0 +1,30 @@
+ void inerjoin() {
+        var data = from em in db.psinghs
+                   join ed in db.sps
+                   on em.ID equals ed.ID
+                   select new { 
+                   em.ID,
+                   em.email,
+                   ed.name,
+                   em.mobileno,
+                   ed.lastname,
+                   };
+        GridView1.DataSource = data;
+        GridView1.DataBind();
+    }
+...................................................................................................................
+
+ void inerjoin() {
+        var data = from em in db.psinghs
+                   join ed in db.sps
+                   on em.ID equals ed.ID
+                   select new { 
+                   em.ID,
+                  EMAIL= em.email,
+                 NAME=  ed.name,
+                 MOBILE=  em.mobileno,
+                 LAST_NAME = ed.lastname,
+                   };
+        GridView1.DataSource = data;
+        GridView1.DataBind();
+    }

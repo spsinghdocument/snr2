@@ -1,0 +1,45 @@
+using DatabaseModel;
+
+
+
+public partial class _Default : System.Web.UI.Page
+{
+    DatabaseEntities db;
+        public _Default()
+        {
+            db = new DatabaseEntities();
+        
+        }
+
+
+
+ protected void Page_Load(object sender, EventArgs e)
+    {
+        Fill();
+    }
+     void Fill()
+    {
+        //GridView1.DataSource =
+        //    db.sps;
+        //GridView1.DataBind();
+         
+         GridView1.DataSource =
+            db.sps.Select(em =>
+                new { em.id, em.firstname });
+         GridView1.DataBind();
+    }
+}
+
+
+.............................................................................
+//All data display
+
+
+GridView1.DataSource =
+           db.sps;
+       GridView1.DataBind();
+........................................................................
+// where use
+
+ GridView1.DataSource = db.sps.Where(em=>em.id>=3);
+        GridView1.DataBind();

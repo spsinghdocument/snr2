@@ -1,0 +1,36 @@
+ public string insret(int a,string b,string c,int d,string e) 
+        {
+            SqlConnection con = new SqlConnection("Data Source=SPSINGH;Initial Catalog=arvind;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into sp values(@id,@name,@lastname,@mark,@attendanse)",con);
+            cmd.Parameters.AddWithValue("@id",a);
+            cmd.Parameters.AddWithValue("@name",b);
+            cmd.Parameters.AddWithValue("@lastname",c);
+            cmd.Parameters.AddWithValue("@mark",d);
+            cmd.Parameters.AddWithValue("@attendanse", e);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return "submit";
+        }
+.....................................................
+[OperationContract]
+        string insret(int a, string b, string c, int d, string e);
+...........................................................................
+<services>
+      <service name="ser">
+        <endpoint address="wshttp://localhost:8080/Ser" binding="wsHttpBinding" contract="IService1"></endpoint>
+      </service>
+    </services>
+.....................................................................
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+            int x = int.Parse(TextBox1.Text);
+            string y = Convert.ToString(TextBox2.Text);
+            string z = Convert.ToString(TextBox3.Text);
+            int m = int.Parse(TextBox4.Text);
+            string n = Convert.ToString(TextBox5.Text);
+            Service1Client s = new Service1Client();
+            //s.insret(x,y,z,m,n);
+           // Response.Write("saurabh  = "+s.insret(x,y,z,m,n));
+            Label1.Text=("saurabh  = " + s.insret(x, y, z, m, n));
+        }

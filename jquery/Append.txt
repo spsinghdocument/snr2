@@ -1,0 +1,43 @@
+  $("#MyTable").append(table);
+..........................................................MAIN...............................................................................
+
+
+  function MainDivT(xyz, eid) {
+        for (var em in xyz) {
+            var table = "<tr class=spCustome>"
+            table += "<td class=spCustomerNametd style='width:150px;color:navy;'>" + xyz[em].Sim_No + "</td>";
+            table += "<td class=spCustomerNametd style='width:150px;color:navy;'>" + xyz[em].User_Name + "</td>";
+            table += "<td class=spCustomerNametd style='width:150px;color:navy;'>" + xyz[em].cafno + "</td>";
+            table += "<td class=spCustomerNametd style='width:150px;color:navy;'>" + xyz[em].customeracno + "</td>";
+            table += "<td class=spCustomerNametd style='width:150px;color:navy;'>" + xyz[em].User_Name + "</td>";
+            table += "</tr>";
+            $("#MyTable").append(table);
+        a();
+
+    }
+    function a() {
+        $("#MyTable tr:even").css("background-color", "#F4F4F8");
+
+        $("#MyTable tr:odd").css("background-color", "#FFFFE0");
+
+    }
+
+</script>
+@*//////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+<div align="center" style="width:100%;">
+<div style=" float:right; width:100%;">
+<table cellpadding="8" cellspacing="6" id="MyTable" border="2" style="width:70%;" >
+
+<caption>
+<h1  style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;"> TOTAL FUND</h1>
+</caption>
+<tr>
+<td  id="spEXECCODE" style="width:8%;background-color:#33CCFF;color:navy;">EXEC CODE</td>
+<td id="spEXECNAME" style="width:8%;background-color:#33CCFF;color:navy;">EXEC NAME</td>
+<td id="spOPENINGFUND" style="width:8%;background-color:#33CCFF;color:navy;">OPENING FUND</td>
+<td id="spADDITIONINFUND" style="width:8%;background-color:#33CCFF;color:navy;">ADDITION IN FUND</td>
+<td id="spCLOSINGBALANCE" style="width:8%;background-color:#33CCFF;color:navy;">CLOSING BALANCE</td>
+</tr>
+
+</table>

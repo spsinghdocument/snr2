@@ -1,0 +1,41 @@
+ function del(id) {
+            var retVal = confirm("Do you want to delete ?");
+            if (retVal == true) {
+                $.ajax({
+                    url: "Default2.aspx/delt",
+                    type: "POST",
+                    data: "{id:" + id + "}",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) { deltet(data); },
+                    error: function (data) { deltet(data); }
+                });
+                return true;
+            } else {
+                alert("User does not want to Delete");
+                return false;
+             }
+        }
+        function deltet(abc) {
+            //debugger;
+            alert(abc.d);
+            sp();
+
+        }
+..............
+tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=delete onclick=del(" + xyz[em].id + ")  type=button value=Delete /></td>";
+.........................
+using System.Web.Services;
+using arvindModel;
+
+
+    [WebMethod]
+    public static string delt(int id)
+    {
+        arvindEntities db = new arvindEntities();
+       
+        Table1 dl = db.Table1.First(em=>em.id==id);
+        db.DeleteObject(dl);
+        db.SaveChanges();
+        return "RECORD HAS DELETED";
+    }

@@ -1,0 +1,50 @@
+ function sp() {
+
+            $.ajax({
+
+                url: 'Default2.aspx/mayank',
+                type: 'post',
+                Date: '{}',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) { chkShow(data); },
+                error: function (data) { chkShow(data); }
+            });
+        }
+        function chkShow(abc) {
+            Grid(abc.d);
+
+        }
+        function Grid(xyz) {
+        var tab = "";
+        tab += "<table>";
+        tab += "<tr>";
+        tab += "<td style='width:100px;background-color:silver;color:navy;'>Emp Id</td>";
+        tab += "<td style='width:100px;background-color:silver;color:navy;'>Emp Name</td>";
+        tab += "<td style='width:100px;background-color:silver;color:navy;'>Emp Lastname</td>";
+        tab += "<td style='width:100px;background-color:silver;color:navy;'>Emp Mobileno</td>";
+        tab += "</tr>";
+        for(var em in xyz)
+        {
+            tab += "<tr>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'>"+xyz[em].id +"</td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].name + "</td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].lastname + "</td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].mobileno + "</td>";
+            tab += "</tr>";
+        }
+        tab += "</table>";
+        $('#d1').html(tab);
+    }
+................................................................................CS
+using saurabhModel;
+using System.Web.Services;
+
+
+[WebMethod]
+    public static List<sp> mayank()
+    {
+    saurabhEntities db = new saurabhEntities();
+        return db.sps.ToList();
+    
+    }

@@ -1,0 +1,8 @@
+C:\Users\sp singh\Desktop\jquery\1\1\bin\1.dll
+C:\Users\sp singh\Desktop\jquery\1\1\bin\1.pdb
+C:\Users\sp singh\Desktop\jquery\1\1\obj\Debug\1.dll
+C:\Users\sp singh\Desktop\jquery\1\1\obj\Debug\1.pdb
+C:\Users\sp singh\Desktop\jquery\jquery\1\1\bin\1.dll
+C:\Users\sp singh\Desktop\jquery\jquery\1\1\bin\1.pdb
+C:\Users\sp singh\Desktop\jquery\jquery\1\1\obj\Debug\1.dll
+C:\Users\sp singh\Desktop\jquery\jquery\1\1\obj\Debug\1.pdb

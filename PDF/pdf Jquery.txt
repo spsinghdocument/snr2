@@ -1,0 +1,10 @@
+function sp() {
+$("#printdiv").print();
+}
+................................
+
+<div>
+    
+        <input id="dddddd" type="button" value="button" onclick="sp();" />
+    </div>
+    <div id="printdiv" ><div style=" background-image: url('dd.jpg')">gggggggg</div></div>

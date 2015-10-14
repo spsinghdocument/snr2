@@ -1,0 +1,35 @@
+  tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=delete onclick=del(" + xyz[em].id + ")  type=button value=Delete /></td>";
+..........................
+  function del(id) {
+          
+            $.ajax({
+                url: "Default2.aspx/delt",
+                type: "POST",
+                data: "{id:" + id + "}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) { deltet(data); },
+                error: function (data) { deltet(data); }
+            });
+        }
+        function deltet(abc) {
+            //debugger;
+            alert(abc.d);
+            sp();
+
+        }
+
+............................................................cs
+ using System.Web.Services;
+using arvindModel;
+
+[WebMethod]
+    public static string delt(int id)
+    {
+        arvindEntities db = new arvindEntities();
+       
+        Table1 dl = db.Table1.First(em=>em.id==id);
+        db.DeleteObject(dl);
+        db.SaveChanges();
+        return "RECORD HAS DELETED";
+    }

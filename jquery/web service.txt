@@ -1,0 +1,31 @@
+<script src="jquery-2.0.2.js" type="text/javascript"></script>
+    <script src="jquery.xml2json.js" type="text/javascript"></script>
+    <script  type="text/javascript">
+        
+            function sp() {
+            $.ajax({
+
+                url: 'http://localhost:2052/service/WebService.asmx/HelloWorld',
+                type: 'post',
+                Date: '{}',
+                contentType: 'text/xml;charset=utf-8',
+                dataType: 'xml',
+                success: function (data) { chkShow(data); },
+                error: function (data) { chkShow(data); }
+     });
+        }
+        function chkShow(abc) {
+
+               //debugger;
+            var data = $.xml2json(abc);
+            alert(data);
+             }
+    </script>
+
+..................................................................
+
+
+       
+
+
+       

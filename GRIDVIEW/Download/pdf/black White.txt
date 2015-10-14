@@ -1,0 +1,35 @@
+Project......References(left)........Add reference......browse........dll(ko add karo)......ok
+.................................................................................................
+using System.Configuration;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
+
+
+................
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            PdfPTable PdfPTable = new PdfPTable(GridView1.HeaderRow.Cells.Count);
+            foreach (GridViewRow GridViewRow in GridView1.Rows)
+            {
+                foreach (TableCell TableCell in GridViewRow.Cells)
+                {
+                    PdfPCell PdfPCell = new PdfPCell(new Phrase(TableCell.Text));
+                    PdfPTable.AddCell(PdfPCell);
+                }
+            }
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+            pdfDocument.Open();
+            pdfDocument.Add(PdfPTable);
+            pdfDocument.Close();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition","attachment;filename=Employees.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();
+        }

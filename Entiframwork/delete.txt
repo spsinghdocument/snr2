@@ -1,0 +1,36 @@
+   protected void Page_Load(object sender, EventArgs e)
+    {  
+ DeleteRecord();
+
+    }
+    void Fill()
+    {
+        GridView1.DataSource = db.sps;
+        GridView1.DataBind();
+    } 
+
+
+
+
+void DeleteRecord()
+    {
+        sp Emp = db.sps.First(em1 => em1.id == 2);
+        db.DeleteObject(Emp);
+        db.SaveChanges();
+        Fill();
+            }
+.....................................................................
+multipul delete
+void DeleteRecord()
+    {
+ List<sp> Emp = db.sps.Where(em => em.firstname == "amit").ToList();
+        string empids = string.Empty;
+        foreach (sp emp in Emp)
+        {
+            empids += emp.id + ",";
+        }
+        empids = empids.TrimEnd(',');
+        db.ExecuteStoreCommand("Delete sp where id in (" + empids + ")", "");
+        db.SaveChanges();
+        Fill();
+    }

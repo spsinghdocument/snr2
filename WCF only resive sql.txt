@@ -1,0 +1,41 @@
+  public string sq(int cod)
+        {
+           // cod = 1;
+          string ret;
+            SqlConnection con= new SqlConnection("Data Source=SPSINGH;Initial Catalog=arvind;Integrated Security=True");
+          //  SqlCommand cmd=new SqlCommand(@"SELECT *  FROM sp WHERE name='arvind'",con);
+            SqlCommand cmd = new SqlCommand(@"SELECT *  FROM sp WHERE id="+cod+"", con);
+            con.Open();
+            SqlDataReader myrd=cmd.ExecuteReader();
+            bool b=myrd.Read();
+            if(b==false)
+            {
+            ret=null;
+            }
+            else
+            {
+            ret=myrd["name"].ToString();
+                 con.Close();
+            }
+            return ret;
+
+        }
+.....................................................
+[OperationContract]
+        string sq(int cod);
+.....................................................................
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+            int ce = Convert.ToInt32(TextBox1.Text);
+            ServiceReference1.Service1Client s = new ServiceReference1.Service1Client();
+            string i = s.sq(ce);
+            if (i == null)
+            {
+                Label1.Text = "NOT";
+
+            }
+            else
+            {
+                Label1.Text = i;
+            }
+        }

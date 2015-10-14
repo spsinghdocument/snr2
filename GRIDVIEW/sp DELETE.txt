@@ -1,0 +1,43 @@
+protected void Page_Load(object sender, EventArgs e)
+    {
+       
+        if (!IsPostBack)
+        {
+            file();
+        }
+       
+    }
+    void file()
+    {
+        arvindEntities db = new arvindEntities();
+        GridView1.DataSource = db.sps;
+        GridView1.DataBind();
+    
+    }
+
+
+  protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+       
+        arvindEntities db = new arvindEntities();
+        Label Labelid = GridView1.Rows[e.RowIndex].FindControl("Labelid") as Label;
+        int j = int.Parse(Labelid.Text);
+        sp em = db.sps.First(ar => ar.id == j);
+        db.DeleteObject(em);
+         db.SaveChanges();
+       
+            Response.Write("<script>alert('Record has deleted') </script>");
+            file();
+        
+    }
+.................
+ <Columns>
+        <asp:TemplateField HeaderText="DELETE">
+        <ItemTemplate>
+            <asp:Button ID="Buttondelte" runat="server" Text="Delete" CommandName="Delete" />
+        </ItemTemplate>
+         
+        </asp:TemplateField>
+        </Columns>
+.............................................ID
+<asp:Label ID="Labelid" runat="server" Text='<%#Bind("id") %>'>'></asp:Label>

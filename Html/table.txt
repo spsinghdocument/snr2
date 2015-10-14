@@ -1,0 +1,15 @@
+<table cellpadding="8" cellspacing="6" id="MyTable" border="2" style="width:100%;" >
+<caption>
+<h1  style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;"> TOTAL FUND</h1>
+</caption>
+<tr>
+<td    rowspan="2" colspan="2" ></td>
+
+
+
+   function a() {
+        $("#MyTable tr:even").css("background-color", "#F4F4F8");
+
+        $("#MyTable tr:odd").css("background-color", "#FFFFE0");
+
+    }

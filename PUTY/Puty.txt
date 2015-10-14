@@ -1,0 +1,55 @@
+//=====================================================Trasfer
+scp libStretgy.so root@192.168.168.36:/root/document
+
+//==============================================
+36 
+pass cd 
+ssh root@192.168.100.226
+
+                                226 load
+
+id = root
+pass = rootroot
+= >  whereis mongo
+=> cd/ user/bin/
+=> ll | grep mongo 
+
+//========================================== Path ===
+export PATH=/opt/mono/bin:$PATH
+export LD_LIBRARY_PATH=/opt/mono/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/opt/mono/lib/pkgconfig:$PKG_CONFIG_PATH
+
+//======================================================
+
+ll
+//
+dir
+//=====================================Search ==
+[root@localhost Desktop]# grep "OPTIDX" *.*
+//==============
+[root@localhost Desktop]# cd contract.txt
+//=======================================
+[root@localhost Desktop]# cd contract
+//====================
+[root@localhost Desktop]# ping 192.168.100.23
+//
+
+[root@localhost Desktop]# xfreerdp --sec rdp -u algo 192.168.100.5
+//====================================================================================== Edit config file
+1  vim NNFServer.exe.config   
+2  i                                         Insert
+
+
+3 keybord    ESC
+4 :wq                 enter
+================
+                             NO insert
+keybord    ESC
+:q!
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+ void insert()
+    {
+        int a;
+            a = int.Parse(TextBox1.Text);
+        sp em = new sp();
+        em.ID = a;
+        em.name =   TextBox2.Text   ;
+        em.lastname =  TextBox3.Text ;
+        db.AddTosps(em);
+        db.SaveChanges();
+        fill();
+    }
+..................................................
+    void UpdateRecord()
+    {
+        int a;
+        a = int.Parse(TextBox1.Text);
+        sp Emp = db.sps.First(em1 => em1.ID == a);
+        Emp.name = TextBox2.Text;
+        Emp.lastname = TextBox3.Text;
+       
+        db.SaveChanges();
+        fill();
+    }
+...........................................................
+ void DeleteRecord()
+    {
+        int a;
+        a = int.Parse(TextBox1.Text);
+        sp Emp = db.sps.First(em1 => em1.ID == a);
+        db.DeleteObject(Emp);
+        db.SaveChanges();
+        fill();
+    }

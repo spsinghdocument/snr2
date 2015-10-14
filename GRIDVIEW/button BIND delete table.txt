@@ -1,0 +1,23 @@
+<asp:Button ID="Button2" runat="server" Text="Button"  OnClick="abc" CommandArgument = <%#Eval("id") %> />
+
+
+
+CS CODING
+.........
+
+ protected void abc(object sender, EventArgs e)
+    {
+        SqlConnection con = new SqlConnection("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\saurabh.mdf;Integrated Security=True;User Instance=True");
+        con.Open();
+        Button bt = (Button)sender;
+        string na = bt.CommandArgument;
+        SqlCommand cmd = new SqlCommand("DELETE FROM sp2 WHERE id =@na", con);
+        cmd.Parameters.AddWithValue("@na", na);
+        cmd.ExecuteNonQuery();
+        con.Close();
+      
+        Response.Redirect("Default2.aspx");
+    
+
+
+    }

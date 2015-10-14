@@ -1,0 +1,20 @@
+using System.Data;
+
+
+ SqlConnection con = new SqlConnection("Data Source=SPSINGH;Initial Catalog=arvind;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT [id], [name],[lastname],[mark],[attendanse] FROM [sp]", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            //string p = "ds";
+           // con.Close();
+            return ds;
+................................................................
+ [OperationContract]
+        DataSet grid();
+..................................................................
+Service1Client s = new Service1Client();
+            GridView1.DataSource = s.grid();
+            GridView1.DataBind();
+......................................................................

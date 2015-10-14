@@ -1,0 +1,45 @@
+.................................EVENT...........
+
+ protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+
+        arvindEntities db = new arvindEntities();
+        Label Labelid = GridView1.Rows[e.RowIndex].FindControl("Labelid") as Label;
+        TextBox TextBoxnameup = GridView1.Rows[e.RowIndex].FindControl("TextBoxnameup") as TextBox;
+        TextBox TextBoxlastnameup = GridView1.Rows[e.RowIndex].FindControl("TextBoxlastnameup") as TextBox;
+        TextBox TextBoxmarkup = GridView1.Rows[e.RowIndex].FindControl("TextBoxmarkup") as TextBox;
+
+        int j = int.Parse(Labelid.Text);
+        int d = int.Parse(TextBoxmarkup.Text);
+        sp em = db.sps.First(ar => ar.id == j);
+        em.name = TextBoxnameup.Text;
+        em.lastname = TextBoxlastnameup.Text;
+        em.mark = d;
+        db.SaveChanges();
+
+        Response.Write("<script>alert('Record has Updated') </script>");
+        GridView1.EditIndex = -1;
+        file();
+    }
+.....................................................BUTTON
+ <Columns>
+        <asp:TemplateField HeaderText="Edit">
+        <ItemTemplate>
+            <asp:Button ID="Buttonedit" runat="server" Text="EDIT" CommandName="Edit" />
+        </ItemTemplate>
+         <EditItemTemplate>
+          <asp:Button ID="ButtonCanceling" runat="server" Text="Cancel" CommandName="Cancel" />
+          <asp:Button ID="ButtonUpdating" runat="server" Text="Updat" CommandName="Update" />
+         </EditItemTemplate>
+        </asp:TemplateField>
+        </Columns>
+...............................TEXTBOX......
+<Columns>
+        <asp:TemplateField HeaderText="MARK">
+        <ItemTemplate>
+        <asp:Label ID="Labelmark" runat="server" Text='<%# Bind("mark") %>'>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+         <asp:TextBox ID="TextBoxmarkup" runat="server" Text='<%# Bind("mark") %>'>'></asp:TextBox>
+                                                          ..........
+        </EditItemTemplate>

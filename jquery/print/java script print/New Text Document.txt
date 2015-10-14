@@ -1,0 +1,19 @@
+<script>
+        function sonu(strid) {
+            var prtcontent = document.getElementById(strid);
+            var winprint = window.open('', '', 'left=0,top=0,width=500,toolbars=0,scrollbars=0,status=0');
+            winprint.document.write(prtcontent.innerHTML)
+            winprint.document.close();
+            winprint.print();
+            winprint.close();
+
+        }
+    </script>
+......................................................
+<div>
+        <input id="Button1" type="button" onclick="javascript:sonu('divprint');" value="button" />
+    </div>
+    <div id="divprint">
+ddddddddd
+
+</div>

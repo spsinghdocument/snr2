@@ -1,0 +1,17 @@
+                                   (SQL Restor)
+* internal sql.........DB(right click).....publish to provider.....next....next..browse........file name..save...
+next........finish
+
+*External sql.......new query(click).........create database mank.......(select & execute).......use mayank (select & Execute)
+......Open file(chithi or patr jasa hoga Hindi)......(select karo)..........open.......yes........(Top per)....use mayank (select & Execute)...
+...(no chose)..........Execute.....database ()
+
+................................................................................................................................................
+                                        (SQL BACKUP)
+*  Database.....Tasks.....Back up......ok.....ok...(sucsful)
+
+* C...program File.......microsoft sql server.............mssqL10.mssqL server.................mssqL.........Back up....
+......mayank.bak.........cut...........past (desktop)
+
+* Database........Restore database...........(Radio button) From device (chaturbhuj (hindi))......click....Add...
+....user...snr...desktop............mayank.bak...............ok....ok..(select (karo hindi))

@@ -1,0 +1,38 @@
+using System.Web.Services;
+
+protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    [WebMethod]
+   public static  string sp() {
+
+        return "saurabh pratap singh";
+    
+    }
+..........................................................
+function sp() {
+            
+            $.ajax({
+
+                url: 'Default.aspx/sp',
+                type: 'post',
+                Date: '{}',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) { chkShow(data); },
+                error: function (data) { chkShow(data); }
+     });
+        }
+        function chkShow(abc) {
+      //  debugger;
+            
+            alert(abc.d);
+         
+        }
+
+
+       
+
+
+        

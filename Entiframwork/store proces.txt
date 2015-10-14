@@ -1,0 +1,77 @@
+create PROc dis
+(
+@id int='',
+@name varchar(max)='',
+@lastname varchar(50)='',
+@msg varchar(max)out
+)
+as begin
+insert into display values (@id,@name,@lastname)
+set @msg ='Registered Successfully'
+end
+..............................................................
+using System.Data.Objects;
+
+
+
+  string Msg = String.Empty;
+            try
+            {
+           
+             spEntities3 db = new spEntities3();
+           
+      
+           ObjectParameter obmg = new ObjectParameter("Msg", typeof(string));
+  db.dis(2, "df", "saurabh", obmg);
+           Msg = Convert.ToString(obmg.Value);
+           
+        }
+               catch (Exception ex)
+            {
+                Msg = "Record Not Saved";
+            
+            }
+            Label1.Text = Msg;
+...................................................................................................................or............................................
+create PROc dis
+(
+@id int='',
+@name varchar(max)='',
+@lastname varchar(50)='',
+@msg varchar(max)out
+)
+as begin
+if not exists (select * from display where id = @id)
+begin
+insert into display values (@id,@name,@lastname)
+set @msg ='Registered Successfully'
+
+end
+else
+begin
+set @msg ='Allrady register'
+end
+end
+.......................................................
+using System.Data.Objects;
+
+
+
+  string Msg = String.Empty;
+            try
+            {
+           
+             spEntities3 db = new spEntities3();
+           
+      
+           ObjectParameter obmg = new ObjectParameter("Msg", typeof(string));
+  db.dis(2, "df", "saurabh", obmg);
+           Msg = Convert.ToString(obmg.Value);
+           
+        }
+               catch (Exception ex)
+            {
+                Msg = "Record Not Saved";
+            
+            }
+            Label1.Text = Msg;

@@ -1,0 +1,124 @@
+<div style=" background-color:Silver; width:100%; height:650px;">
+<div align="center"  style=" background-color:Aqua; width:400px; height:300px;  position:relative; top:20%; left:35%;">
+
+
+</div>
+    </div>
+
+.....................................................................
+<h1 align="center" style="color:Blue;"><b>Result</b></h1>
+    <hr style=" width:85%; background-color:Red; height:5px;" />
+........................................................................................
+<div>
+    <div style="float:left; width:50%;">gggggggg</div>
+<div style="float:right; width:50%;">gggggggg</div>
+</div>
+.................................................................................Div POP..................
+
+<div id="s1" style=" background-color:Aqua; width:200px; height:200px;"></div>
+
+$("#s1").dialog();
+..............................................................................................................Design...............
+ <div class="haider1"></div>
+     <div class="haider2"> </div>
+    <div class="main">
+    
+     <div class="img"></div> 
+    
+    <div class="body">
+     <div class="bodyLeft">ddddddddd</div>
+      <div class="bodyMID">aaaaaaa</div>
+    <div class="bodyRight">sssssss</div>
+    </div>
+    
+    
+    </div>
+   <div class="floaterr1">ffffff</div>
+     <div class="floaterr2"> hhhhhhhhhhhhhh</div>
+..........................................................STYLE...............
+body {
+}
+.haider1
+{
+  background-color:#F8F8F8;
+  width:100%;
+  height:30px; 
+    
+    
+    }
+    .haider2
+    {
+      background-color:#660000;
+  width:100%;
+  height:80px;  
+    }
+    .main
+    {
+           background-color:#FF33CC;
+           
+  width:100%;
+  
+        }
+        .img
+        {
+            background-color:Black;
+            width:80%;
+            height:300px;
+            position:relative;
+            text-align:center;
+            top:5%;
+            left:10%;
+            right:10%;
+            
+            }
+           .body
+           {
+            position:relative;
+            top:5%;
+            height:1000px;
+             
+               }
+                .bodyLeft
+           {
+           background-color:Aqua;
+            float:left;
+            width:10%;
+              height:1000px;
+               }
+               .bodyMID
+               {
+                background-color:Green;
+                float:left;
+                 width:80%;
+                  height:1000px; 
+                   
+                   }
+                   .bodyRight
+                   {
+                    background-color:Aqua;
+                    float:left;
+                    width:10%;
+                    height:1000px;   
+                       }
+            
+            .floaterr1
+            {
+                background-color:#F8F8F8;
+            
+  width:100%;
+  height:30px; 
+                
+                }
+                .floaterr2
+            {
+                background-color:Red;
+  width:100%;
+  height:50px; 
+                
+                }
+
+
+
+
+
+

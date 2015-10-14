@@ -1,0 +1,60 @@
+ function sp() {
+            $.ajax({
+                url: "Default2.aspx/database",
+                type: "POST",
+                data: "{}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) { saurabh(data); },
+                error: function (data) { saurabh(data); }
+            });
+        }
+        function saurabh(abc) {
+            //alert(abc.d);
+            Grid(abc.d)
+            //debugger;
+        }
+        
+        function Grid(xyz) {
+            var tab = "";
+            tab += "<table border='2'>";
+            tab += "<tr>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'> Id</td>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'>Name</td>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'>Lastname</td>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'>MARK</td>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'>ATTENDESS</td>";
+            tab += "<td style='width:100px;background-color:red;color:navy;'>INSERTION</td>";
+            tab += "</tr>";
+            for (var em in xyz) {
+                tab += "<tr>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].id + "</td>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].name + "</td>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].lastname + "</td>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].mark + "</td>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'>" + xyz[em].attendess + "</td>";
+                tab += "<td style='width:100px;background-color:silver;color:navy;'></td>";
+                tab += "</tr>";
+            }
+
+            tab += "<tr>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=Text1 type=text /></td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=Text2 type=text /></td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=Text3 type=text /></td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=Text4 type=text /></td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=Text5 type=text /></td>";
+            tab += "<td style='width:100px;background-color:silver;color:navy;'><input id=save onclick=insert() type=button value=Insert /></td>";
+            tab += "</tr>";
+
+            tab += "</table>";
+            $('#d1').html(tab);
+        }
+.............................................................cs
+  using System.Web.Services;
+using arvindModel;
+
+[WebMethod]
+    public static List<Table1> database() {
+        arvindEntities db = new arvindEntities();
+        return db.Table1.ToList();
+    }

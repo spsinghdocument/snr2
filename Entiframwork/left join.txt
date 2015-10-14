@@ -1,0 +1,20 @@
+  void leftjoin()
+    {
+        var data = from em in db.psinghs
+                  
+                   join ed in db.sps
+                   on em.ID equals ed.ID
+                  
+                   into edd
+                   from ed1 in edd.DefaultIfEmpty()
+                   select new
+                   {
+                       em.ID,
+                       EMAIL = em.email,
+                       MOBILE = em.mobileno,
+                       LAST_NAME = ed1.lastname,
+                       NAME = ed1.name,
+                   };
+        GridView1.DataSource = data;
+        GridView1.DataBind();
+    }

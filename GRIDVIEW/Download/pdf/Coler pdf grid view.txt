@@ -1,0 +1,46 @@
+Project......References(left)........Add reference......browse........dll(ko add karo)......ok
+.................................................................................................
+using System.Configuration;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
+
+
+................
+
+ PdfPTable PdfPTable = new PdfPTable(GridView1.HeaderRow.Cells.Count);
+            foreach (TableCell headerCell in GridView1.HeaderRow.Cells)
+            {
+                Font Font = new Font();
+                Font.Color = new BaseColor(GridView1.HeaderStyle.ForeColor);
+                PdfPCell PdfPCell = new PdfPCell(new Phrase(headerCell.Text, Font));
+                PdfPCell.BackgroundColor = new BaseColor(GridView1.HeaderStyle.BackColor);
+                PdfPTable.AddCell(PdfPCell);
+            
+            
+            }
+            foreach (GridViewRow GridViewRow in GridView1.Rows)
+            {
+                foreach (TableCell TableCell in GridViewRow.Cells)
+                {
+                    Font Font = new Font();
+                    Font.Color = new BaseColor(GridView1.RowStyle.ForeColor);
+
+                    PdfPCell PdfPCell = new PdfPCell(new Phrase(TableCell.Text));
+                    PdfPCell.BackgroundColor = new BaseColor(GridView1.RowStyle.BackColor);
+                    PdfPTable.AddCell(PdfPCell);
+                }
+            }
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+            pdfDocument.Open();
+            pdfDocument.Add(PdfPTable);
+            pdfDocument.Close();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=Employees.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();

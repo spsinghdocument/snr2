@@ -1,0 +1,34 @@
+using System.Configuration;
+using System.IO;
+
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.ClearContent();
+           Response.AppendHeader("content-disposition", "attachment;filename=Employees.xls");
+            Response.ContentType = "application/excel";
+StringWriter StringWriter = new StringWriter();
+            HtmlTextWriter HtmlTextWriter = new HtmlTextWriter(StringWriter);
+            GridView1.HeaderRow.Style.Add("background-color","#ffffff");
+            foreach (TableCell tablecell in GridView1.HeaderRow.Cells)
+            {
+                tablecell.Style["background-color"] = "#A55129";
+            }
+            foreach (GridViewRow gridViewRow in GridView1.Rows)
+            {
+                gridViewRow.BackColor=System.Drawing.Color.White;
+                foreach (TableCell gridViewRowTableCell in gridViewRow.Cells)
+                {
+                    gridViewRowTableCell.Style["background-color"] = "#FFF7E7";
+                }
+            
+            }
+
+
+            GridView1.RenderControl(HtmlTextWriter);
+            Response.Write(StringWriter.ToString());
+            Response.End();
+        }
+  public override void VerifyRenderingInServerForm(Control control)
+        {
+
+        }

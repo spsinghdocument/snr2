@@ -1,0 +1,26 @@
+calendar.......properties.....event.....dayrender.....(click)...
+
+
+ protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+...........
+    {
+        if (e.Day.Date < DateTime.Now.Date || e.Day.Date >= DateTime.Now.AddMonths(3))
+        {
+            e.Day.IsSelectable = false;
+        }
+    }
+.......................................................
+calendar.....(click)...
+
+ protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+    {
+        TextBox1.Text = Calendar1.SelectedDate.ToShortDateString();
+        Calendar1.Visible = false;
+    }
+
+.......................
+ImageButton1 (Click)..........
+protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Calendar1.Visible = true;
+    }

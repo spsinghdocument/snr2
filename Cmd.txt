@@ -1,0 +1,9 @@
+ipconfig   =se system ka IP address aajyaga
+.....................
+d:
+......................create folder 
+md spsingh
+============================================== delete 
+del sp.cs
+=======================================================Cllear
+cls

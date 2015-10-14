@@ -1,0 +1,47 @@
+  using DatabaseModel;
+
+public partial class insert : System.Web.UI.Page
+{
+    DatabaseEntities db;
+    public insert()
+        {
+            db = new DatabaseEntities();
+        
+        }
+
+
+
+
+  protected void Page_Load(object sender, EventArgs e)
+    {
+        
+        InsertRecord();
+      
+
+    }  
+
+
+void Fill()
+    {
+        GridView1.DataSource = db.sps;
+        GridView1.DataBind();
+    }
+    void InsertRecord()
+    {
+        sp Emp = new sp();
+        Emp.id = 5;
+        Emp.firstname = "amit";
+        Emp.lastname = "dffghhh";
+        Emp.email = "df@gmail.com";
+        Emp.mobileno = "3434345454554";
+        db.AddTosps(Emp);
+        db.SaveChanges();
+        Fill();
+    }
+}
+................................................................................................................
+                         OR
+db.AddToTable1(new Table1 {id=19,name="saurabh praatap",lastname="singh",mark=10,attendess="a" });
+        db.SaveChanges();
+        GridView1.DataSource = db.Table1;
+        GridView1.DataBind();

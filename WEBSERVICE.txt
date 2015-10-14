@@ -1,0 +1,18 @@
+using ServiceReference1;
+
+ public void sp()
+    {
+       
+        ServiceReference1.WebServiceSoapClient web = new WebServiceSoapClient();
+     GridView1.DataSource=   web.HelloWorld();
+     GridView1.DataBind();
+    
+    }
+......................................
+using arvindModel;
+  [WebMethod]
+    public List<sp>  HelloWorld() {
+        arvindEntities db = new arvindEntities();
+        return db.sps.ToList();
+     
+    }

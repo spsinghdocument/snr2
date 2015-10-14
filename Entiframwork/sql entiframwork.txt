@@ -1,0 +1,8 @@
+ public void gri()
+    {
+//  List<sp> em = db.ExecuteStoreQuery<sp>("SELECT * FROM sp WHERE name LIKE 'arvind'").ToList();
+        //List<sp> em = db.ExecuteStoreQuery<sp>("SELECT [id], [name] FROM [sp]").ToList();
+        List<sp> em = db.ExecuteStoreQuery<sp>("select * from sp where id<=3").ToList();
+        GridView1.DataSource = em;
+        GridView1.DataBind();
+    }

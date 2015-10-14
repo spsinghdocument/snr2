@@ -1,0 +1,30 @@
+  function insert() {
+            var id = $("#Text1").val();
+            var name = $("#Text2").val();
+            var lastname = $("#Text3").val();
+            var mark = $("#Text4").val();
+            var attendes = $("#Text5").val();
+            $.ajax({
+                url: "Default2.aspx/v",
+                type: "POST",
+                 data: "{id:" + id + ",name:'" + name + "',lastname:'" + lastname + "',mark:" + mark + ",attendess:'" + attendes + "'}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) { insertt(data); },
+                error: function (data) { insertt(data); }
+            });
+        }
+        function insertt(abc) {
+            //debugger;
+            alert(abc.d);
+            sp();
+           
+        }
+.......................
+ [WebMethod]
+    public static string v(int id,string name,string lastname,double mark,string attendess) {
+        arvindEntities db = new arvindEntities();
+        db.AddToTable1(new Table1 {id=id,name=name,lastname=lastname,mark=mark,attendess=attendess });
+        db.SaveChanges();
+        return "RECORD HAS INSERTED";
+    }

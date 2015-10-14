@@ -1,0 +1,19 @@
+using System.Configuration;
+using System.IO;
+
+
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+ Response.ClearContent();
+            Response.AppendHeader("content-disposition", "attachment;filename=Employees.xls");
+            Response.ContentType = "application/excel";
+ StringWriter StringWriter = new StringWriter();
+            HtmlTextWriter HtmlTextWriter = new HtmlTextWriter(StringWriter);
+            GridView1.RenderControl(HtmlTextWriter);
+            Response.Write(StringWriter.ToString());
+            Response.End();
+ }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+
+        }

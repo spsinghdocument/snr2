@@ -1,0 +1,76 @@
+<script src="jquery-2.0.2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function sp() {
+           
+            var id = $("#Text1").val();
+            var name = $("#Text2").val();
+            var lastname = $("#Text3").val();
+            var mark = $("#Text4").val();
+            var attendess = $("#Text5").val();
+
+            $.ajax({
+                url: "Default4.aspx/Insert",
+                type: "POST",
+                data: "{id:'" + id + "',name:'" + name + "',lastname:'" + lastname + "',mark:'" + mark + "',attendess:'"+attendess+"'}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) { viw(data); },
+                error: function (data) { viw(data); }
+            });
+        }
+        function viw(abc) {
+            alert(abc.d);
+        }
+    </script>
+
+
+
+
+
+
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+    <table border="2">
+
+    <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;">ID</td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="Text1" style=" width:200px; height:30px;"  type="text" /></td>
+    </tr>
+     <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;">NAME</td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="Text2" style=" width:200px; height:30px;"  type="text" /></td>
+    </tr>
+    <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;">LASTNAME</td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="Text3" style=" width:200px; height:30px;"  type="text" /></td>
+    </tr>
+    <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;">MARK</td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="Text4" style=" width:200px; height:30px;"  type="text" /></td>
+    </tr>
+    <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;">ATTENDESS</td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="Text5" style=" width:200px; height:30px;"  type="text" /></td>
+    </tr>
+    <tr>
+    <td style= "width:100px; background-color:Silver; color:Aqua;"></td>
+    <td style=" width:300px; background-color:Silver; color:Gray;"><input id="button1" onclick="sp()"; style=" width:100px; height:30px;"  type="button" value="SUBMIT" /></td>
+    </tr>
+    </table>
+
+    </div>
+    </form>
+</body>
+..............................................................................................
+using arvindModel;
+using System.Web.Services;
+ [WebMethod]
+    public static string Insert(int id, string name, string lastname, int mark, string attendess)
+    {
+        arvindEntities db = new arvindEntities();
+        db.AddToTable1(new Table1 { id = id, name = name, lastname = lastname, mark = mark, attendess = attendess });
+        db.SaveChanges();
+        return "RECORD HAS INSERT";
+       }

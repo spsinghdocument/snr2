@@ -1,0 +1,31 @@
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+....................................................................................................
+ramDataContext db = new ramDataContext();
+ var f = from m in db.sps
+                    where m.id >= 33
+                    where m.id <= 555
+                    where m.name == "sss"
+ //select m;
+                    select new {ID=m.id,NAME=m.name };
+            foreach (var q in f)
+            {
+ GridView2.DataSource = f;
+                GridView2.DataBind();
+                
+            }
+.........................................................................................
+ foreach (var q in f)
+            {
+                Response.Write(q.ID);
+
+                //listBox1.Items.Add(q.id + "");
+                 // listBox1.Items.Add(q.attendanse + " pert");
+                //Label1.Text =( q.id+"");
+}
+..................................................................
+ramDataContext r = new ramDataContext();
+            sp s = new sp();
+            GridView1.DataSource = r.sps;
+            GridView1.DataBind();
+...............................................................................................

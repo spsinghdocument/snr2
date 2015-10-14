@@ -1,0 +1,18 @@
+ public void serttxtchange()
+        {
+            con = new SqlConnection("Data Source=SPSINGH;Initial Catalog=arvind;Integrated Security=True");
+            string query = "select name  from sp";   // where partyname like '" + txtsearch.Text + "'+'%'";
+            cmd = new SqlCommand(query,con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new System.Data.DataSet();
+            da.Fill(ds, "tab");
+            AutoCompleteStringCollection autosearch = new AutoCompleteStringCollection();
+            foreach (DataRow v in ds.Tables[0].Rows)
+            {
+                autosearch.Add(v["name"].ToString().Trim());
+            }
+
+            textBox1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            textBox1.AutoCompleteCustomSource = autosearch;
+        }

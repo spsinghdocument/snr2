@@ -1,0 +1,41 @@
+using System.Data;
+
+
+
+ DataTable dt;
+ protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            dt = new DataTable();
+            dt.Columns.Add("a", typeof(string));
+            dt.Columns.Add("b", typeof(string));
+            ViewState["tab"] = dt;
+        }
+
+            
+
+    }
+     // List<Emp> li=new List<Emp>
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //if (dt == null)
+        //{
+          dt = (DataTable)ViewState["tab"];
+        //}
+      
+        DataRow dr = dt.NewRow();
+        dr["a"] = TextBox1.Text;
+        dr["b"] = TextBox2.Text;
+        dt.Rows.Add(dr);
+       
+      
+        
+        GridView1.DataSource=dt;
+      
+       GridView1.DataBind();
+       ViewState["tab"] = dt;
+       
+    }
+
+    

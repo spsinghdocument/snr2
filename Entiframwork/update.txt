@@ -1,0 +1,28 @@
+   protected void Page_Load(object sender, EventArgs e)
+    {
+        
+      
+        UpdateRecord();
+       
+
+    }
+    void Fill()
+    {
+        GridView1.DataSource = db.sps;
+        GridView1.DataBind();
+    } 
+
+
+
+
+
+void UpdateRecord()
+    {
+        sp Emp = db.sps.First(em1 => em1.id == 10);
+        Emp.firstname = "saurabh";
+        Emp.lastname = "pratap singh";
+        Emp.email = "sp@gmail.com";
+        Emp.mobileno = "50000";
+        db.SaveChanges();
+        Fill();
+    }

@@ -1,0 +1,33 @@
+                 DELETE
+
+ramDataContext db = new ramDataContext();
+            sp s = db.sps.Single(em=>em.id==1);
+            db.sps.DeleteOnSubmit(s);
+            db.SubmitChanges();
+ GridView2.DataSource = db.sps;
+            GridView2.DataBind();
+.................................................................................
+                    UPDATE
+
+ ramDataContext db = new ramDataContext();
+            sp s = db.sps.Single(em=>em.id==2);
+            s.name = "saurabh";
+            s.lastname = "pratap";
+            s.mark =500 ;
+            s.attendanse = "per";
+            db.SubmitChanges();
+...........................................................................
+                    INSERT
+private void insert(){
+ ramDataContext db = new ramDataContext();
+            sp s = new sp();
+            s.id = 4;
+            s.name = "mrutunja";
+            s.lastname = "singh";
+            s.mark =500 ;
+            s.attendanse = "a";
+            db.sps.InsertOnSubmit(s);
+            db.SubmitChanges();
+GridView2.DataSource = db.sps;
+            GridView2.DataBind();
+}

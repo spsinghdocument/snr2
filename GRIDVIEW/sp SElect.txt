@@ -1,0 +1,47 @@
+ <Columns>
+        <asp:TemplateField HeaderText="ID">
+        <ItemTemplate>
+        <asp:Label ID="lavelid" runat="server" Text='<%#Bind("id") %>'>'></asp:Label>
+        </ItemTemplate>
+        </asp:TemplateField>
+        </Columns>
+
+
+<Columns>
+        <asp:TemplateField HeaderText="ID">
+        <ItemTemplate>
+        <asp:Label ID="lavelid" runat="server" Text='<%#Bind("id") %>'>'></asp:Label>
+        </ItemTemplate>
+        </asp:TemplateField>
+        </Columns>
+................BUTTON....................
+ <Columns>
+        <asp:TemplateField HeaderText="UPDATE">
+   <ItemTemplate>
+   
+       <asp:Button ID="btn" runat="server" Text="SELECT" CommandName="Update"  ></asp:Button>
+         </ItemTemplate>
+        </asp:TemplateField>
+        </Columns>
+................................................................................................
+ <asp:Button ID="Button1" runat="server" Text="UPDATE" Visible="False" />
+...................................................................................
+...........................GRidview......Event.....UPDATE...........
+
+ protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        Label lavelid = GridView1.Rows[e.RowIndex].FindControl("lavelid") as Label;
+        Label lavelname = GridView1.Rows[e.RowIndex].FindControl("lavelname") as Label;
+        Label lavellastname = GridView1.Rows[e.RowIndex].FindControl("lavellastname") as Label;
+        Label lavelmark = GridView1.Rows[e.RowIndex].FindControl("lavelmark") as Label;
+        Label lavelattendanse = GridView1.Rows[e.RowIndex].FindControl("lavelattendanse") as Label;
+       
+        Label1.Text = lavelid.Text;
+        TextBox1.Text = lavelname.Text;
+        TextBox2.Text = lavellastname.Text;
+        TextBox3.Text = lavelmark.Text;
+        TextBox4.Text = lavelattendanse.Text;
+        Button1.Visible = true;
+        Button2.Visible = true;
+        file();
+    }
