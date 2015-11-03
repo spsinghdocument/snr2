@@ -1,0 +1,22 @@
+    // Join
+            var sd = from s in ob.logins
+                     join sa in ob.login3 on s.username equals sa.username
+                     into edd
+                     from ed1 in edd.DefaultIfEmpty()
+
+                     select s;
+
+            var l = sd.ToList();
+
+            // group By
+            var refGroupQuery = (from m in ob.logins
+                                 group m by m.username into a
+                                 select a).ToList();
+            // order by 
+            var q = (from m in ob.logins
+                                 group m by m.username into a
+                                 select a).OrderByDescending(i=>i.FirstOrDefault().password).ToList();
+
+            // group By
+            var data =from m in ob.logins group m by m.username into a select new { EMName = a.Key, emsalarySum = a.Sum(m => Convert.ToDouble(m.password)) };
+            
