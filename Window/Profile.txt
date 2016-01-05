@@ -1,0 +1,132 @@
+===========================class LastProfile ===
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace Client
+{
+    public class LastProfile
+    {
+        private static readonly LastProfile instance = new LastProfile();
+        public static LastProfile Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public void ReadDataGridViewSetting(DataGridView dgv, string FileName)
+        {
+            try
+            {
+
+                if (!Directory.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile");
+                }
+                if (File.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile" + Path.DirectorySeparatorChar + FileName + ".xml"))
+                {
+
+                    XmlDocument xmldoc = new XmlDocument();
+                    XmlNodeList xmlnode;
+                    int i = 0;
+                    string str = null;
+                    FileStream fs = new FileStream(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile" + Path.DirectorySeparatorChar + FileName + ".xml", FileMode.Open, FileAccess.Read);
+                    xmldoc.Load(fs);
+                    xmlnode = xmldoc.GetElementsByTagName("column");
+                    for (i = 0; i <= xmlnode.Count - 1; i++)
+                    {
+                        xmlnode[i].ChildNodes.Item(0).InnerText.Trim();
+                        string columnName = xmlnode[i].ChildNodes.Item(0).InnerText.Trim();
+                        int width = int.Parse(xmlnode[i].ChildNodes.Item(1).InnerText.Trim());
+                        string headertext = xmlnode[i].ChildNodes.Item(2).InnerText.Trim();
+                        int displayindex = int.Parse(xmlnode[i].ChildNodes.Item(3).InnerText.Trim());
+                        Boolean visible = Convert.ToBoolean(xmlnode[i].ChildNodes.Item(4).InnerText.Trim());
+                        dgv.Columns[columnName].Width = width;
+                        dgv.Columns[columnName].HeaderText = headertext;
+                        dgv.Columns[columnName].DisplayIndex = displayindex;
+                        dgv.Columns[columnName].Visible = visible;
+                        //MessageBox.Show(str);
+                    }
+                    fs.Close();
+                }
+            }
+            catch(Exception ex)
+            { }
+        }
+
+        public void WriteGrideViewSetting(DataGridView dgv, string FileName)
+        {
+            try
+            { 
+            if (!Directory.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile");
+            }
+
+
+            XmlTextWriter textwriter = new XmlTextWriter(Application.StartupPath + Path.DirectorySeparatorChar + "LastProfile" + Path.DirectorySeparatorChar + FileName + ".xml", null);
+            textwriter.WriteStartDocument();
+            textwriter.WriteStartElement(dgv.Name);
+
+            int count = dgv.Columns.Count;
+            for (int i = 0; i < count; i++)
+            {
+
+                textwriter.WriteStartElement("column");
+
+                textwriter.WriteStartElement("Name");
+                textwriter.WriteString(dgv.Columns[i].Name);
+                textwriter.WriteEndElement();
+
+                textwriter.WriteStartElement("width");
+                textwriter.WriteString(dgv.Columns[i].Width.ToString());
+                textwriter.WriteEndElement();
+
+                textwriter.WriteStartElement("headertext");
+                textwriter.WriteString(dgv.Columns[i].HeaderText);
+                textwriter.WriteEndElement();
+
+                textwriter.WriteStartElement("displayindex");
+                textwriter.WriteString(dgv.Columns[i].DisplayIndex.ToString());
+                textwriter.WriteEndElement();
+
+                textwriter.WriteStartElement("visible");
+                textwriter.WriteString(dgv.Columns[i].Visible.ToString());
+                textwriter.WriteEndElement();
+
+                textwriter.WriteEndElement();
+
+            }
+            textwriter.WriteEndElement();
+            textwriter.WriteEndDocument();
+            textwriter.Close();
+            }
+            catch (Exception ex)
+            { }
+        }
+    }
+}
+=============================================== Close form --
+ private void frmTradeBook_FormClosing(object sender, FormClosingEventArgs e)
+        {
+    LastProfile.Instance.WriteGrideViewSetting(DGV, "TradeBook");
+        }
+========================================================== load form
+  public void profile_load()
+        {
+         LastProfile.Instance.ReadDataGridViewSetting(DGV, "TradeBook");
+
+        }
+
+//////////////////////////////////////////////////////////////////// Second =======
+
+ DataGridViewColumnSelector cs = new DataGridViewColumnSelector(DGV);
+                cs.MaxHeight = 200;
+                cs.Width = 150;
+

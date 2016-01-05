@@ -1,0 +1,166 @@
+using System;
+usingSystem.Collections.Generic;
+usingSystem.ComponentModel;
+usingSystem.Data;
+usingSystem.Drawing;
+usingSystem.Linq;
+usingSystem.Text;
+usingSystem.Windows.Forms;
+usingSystem.Data.SqlClient;
+usingSystem.Data;
+usingDataAccessLayer.DAL;
+
+namespacePresentationAccessLayer
+{
+publicpartialclassEntrySheet : Form
+    {
+EntrySheetDALentDal;
+publicEntrySheet()
+        {
+InitializeComponent();
+entDal = newEntrySheetDAL();
+display();
+        }
+
+
+void display()
+        {
+
+DataSet ds = entDal.enter();
+            dataGridView1.AutoGenerateColumns = false;
+dataGridView1.Columns[0].Name = "clientCode";
+dataGridView1.Columns[0].HeaderText = "clientCode";
+dataGridView1.Columns[0].DataPropertyName = "clientCode";
+
+dataGridView1.Columns[1].Name = "name";
+dataGridView1.Columns[1].HeaderText = "name";
+dataGridView1.Columns[1].DataPropertyName = "name";
+
+dataGridView1.Columns[2].Name = "NetProfitLoss";
+dataGridView1.Columns[2].HeaderText = "NetProfitLoss";
+dataGridView1.Columns[2].DataPropertyName = "NetProfitLoss";
+
+dataGridView1.Columns[3].Name = "CHG_REV";
+dataGridView1.Columns[3].HeaderText = "CHG_REV";
+dataGridView1.Columns[3].DataPropertyName = "CHG_REV";
+
+dataGridView1.Columns[4].Name = "ID_CHG";
+dataGridView1.Columns[4].HeaderText = "ID_CHG";
+dataGridView1.Columns[4].DataPropertyName = "ID_CHG";
+
+dataGridView1.Columns[5].Name = "Interest";
+dataGridView1.Columns[5].HeaderText = "Interest";
+dataGridView1.Columns[5].DataPropertyName = "Interest";
+
+dataGridView1.Columns[6].Name = "ratio";
+dataGridView1.Columns[6].HeaderText = "ratio";
+dataGridView1.Columns[6].DataPropertyName = "ratio";
+
+dataGridView1.Columns[7].Name = "SETT_DIFF";
+dataGridView1.Columns[7].HeaderText = "SETT_DIFF";
+dataGridView1.Columns[7].DataPropertyName = "SETT_DIFF";
+
+dataGridView1.Columns[8].Name = "FIXED_CHG";
+dataGridView1.Columns[8].HeaderText = "FIXED_CHG";
+dataGridView1.Columns[8].DataPropertyName = "FIXED_CHG";
+
+dataGridView1.Columns[9].Name = "SALARY_CHQ";
+dataGridView1.Columns[9].HeaderText = "SALARY_CHQ";
+dataGridView1.Columns[9].DataPropertyName = "SALARY_CHQ";
+
+dataGridView1.Columns[10].Name = "NET_AMT";
+dataGridView1.Columns[10].HeaderText = "NET_AMT";
+dataGridView1.Columns[10].DataPropertyName = "NET_AMT";
+
+
+dataGridView1.Columns[11].Name = "TRF_To_SEC";
+dataGridView1.Columns[11].HeaderText = "TRF_To_SEC";
+dataGridView1.Columns[11].DataPropertyName = "TRF_To_SEC";
+
+
+
+dataGridView1.Columns[12].Name = "Paid";
+dataGridView1.Columns[12].HeaderText = "Paid";
+dataGridView1.Columns[12].DataPropertyName = "Paid";
+
+dataGridView1.Columns[14].Name = "Recd";
+dataGridView1.Columns[14].HeaderText = "Recd";
+dataGridView1.Columns[14].DataPropertyName = "Recd";
+
+dataGridView1.Columns[16].Name = "Net_Amount";
+dataGridView1.Columns[16].HeaderText = "Net_Amount";
+dataGridView1.Columns[16].DataPropertyName = "Net_Amount";
+
+dataGridView1.Columns[17].Name = "cash_P_R";
+dataGridView1.Columns[17].HeaderText = "cash_P_R";
+dataGridView1.Columns[17].DataPropertyName = "cash_P_R";
+
+            dataGridView1.DataSource = ds.Tables[0];
+
+
+
+
+
+
+        }
+
+privatevoid dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1_CellContentClick_1(sender, e);
+//  Paid p = new Paid();
+// p.Show();
+
+        }
+
+// private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+//{
+//    //  string a, b, c, d, r, f, g, h;
+//     // Paid p = new Paid();
+//     // p.label1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+//     // b = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+//      //c = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+
+
+//    // p.Show();
+//    if (e.ColumnIndex == 5)
+//    {
+
+//        string s;
+//    }
+
+// }
+
+privatevoid dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+       {
+string a, b, c, d, r, f, g, h;
+
+if (e.ColumnIndex == 13)
+           {
+
+Paid p = newPaid();
+               p.label1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+               p.label2.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+p.show2();
+p.Show();
+           }
+
+if (e.ColumnIndex == 15)
+           {
+Receved re = newReceved();
+               re.label1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+               re.label2.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+re.Show();
+re.show2();
+           }
+
+       }
+
+
+
+
+    }
+}
+
+
+ 

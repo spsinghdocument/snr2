@@ -1,0 +1,3 @@
+ Type controlType = DGV.GetType();
+                PropertyInfo pi = controlType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+                pi.SetValue(DGV, true, null);
