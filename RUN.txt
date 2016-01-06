@@ -1,0 +1,46 @@
+mspaint
+///
+mstsc
+------telnet
+telnet 192.168.168.36 2911
+------Ping
+ping 192.168.168.36 -t
+ping Google.com -t
+------------------Control Panal  open---
+appwiz.cpl
+----------------
+control panel
+-----
+cmd
+----------
+calc
+---
+excel
+
+----------
+E:\sp\Node\New folder\New folder\server_2\server_2\bin\Debug
+----------------------------------------------
+notepad
+---
+mstsc
+----
+services
+------
+services.msc
+-----------
+temp
+----------
+%temp%
+-----------------Current open
+recent
+--------------Key Bord open---
+osk
+---
+\\192.168.168.97
+=============
+cookies
+----------- word opn
+winword
+
+----------
+notepad++
