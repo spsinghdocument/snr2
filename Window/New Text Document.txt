@@ -1,0 +1,10 @@
+// Top most True
+  AppGlobal.frmSpotIndex = new Spot.frmSpot();
+            AppGlobal.frmSpotIndex.TopMost = true;
+            AppGlobal.frmSpotIndex.Show();
+
+//===========Form Front ========
+
+   Trade_Tracker.Instance.BringToFront();
+//===========
+Form ProPerties Open --(Select) == f4
