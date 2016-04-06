@@ -1,0 +1,98 @@
+//----------Web.config
+  <connectionStrings>
+    <add name="PotLuckConnection" connectionString="Data Source=ADMINMAYANK;Initial Catalog=Inventory_MVC2;Integrated Security=True" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+
+//===========class StudentDatabaseContext
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+  public class StudentDatabaseContext : DbContext 
+    {
+        static StudentDatabaseContext()
+        {
+         Database.SetInitializer < StudentDatabaseContext>(null);
+        }
+
+        public StudentDatabaseContext(): base("PotLuckConnection")
+        {
+          
+        }
+
+        public DbSet<nodejs> nodejs { get; set; }
+       // public IDbSet<PotLuckEvent> PLEvent { get; set; }
+       
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new StudentMap());
+
+        }
+
+    }
+
+//================= class nodejs  /////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
+  #region Automated Properties
+    public class nodejs
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MIDILENAME { get; set; }
+        public string EMAIL { get; set; }
+        public int MOBILENO { get; set; }
+        public string FATHERNAME { get; set; }
+}
+    #endregion
+
+/////////////  class StudentMap //////////////////////////////////////////
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Entity.ModelConfiguration;
+
+public class StudentMap :EntityTypeConfiguration<nodejs>
+    {
+        public StudentMap()
+        {
+            this.HasKey(c => c.MOBILENO);
+
+            this.ToTable("nodejs");
+            this.Property(t => t.MOBILENO).HasColumnName("MOBILENO");
+            this.Property(t => t.FirstName).HasColumnName("FirstName");
+            this.Property(t => t.LastName).HasColumnName("LastName");
+            this.Property(t => t.MIDILENAME).HasColumnName("MIDILENAME");
+            this.Property(t => t.EMAIL).HasColumnName("EMAIL");
+            this.Property(t => t.FirstName).HasColumnName("FirstName");
+        
+        }
+    }
+
+///========================================class spController (call)---------------------------------------
+
+
+         StudentDatabaseContext s = new StudentDatabaseContext();
+          var db = from a in s.nodejs select a;
+
+          foreach (var stu in db.ToList())
+          {
+              Console.WriteLine(stu.EMAIL);
+          }
+
+//=============
+

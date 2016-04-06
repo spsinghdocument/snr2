@@ -1,0 +1,13 @@
+
+            StudentDatabaseContext db = new StudentDatabaseContext();
+            nodejs T1 = new nodejs();
+            T1.FirstName = "nitin";
+            T1.LastName = "gupata";
+            T1.MIDILENAME = "sssss";
+            T1.EMAIL = "nit";
+            T1.MOBILENO = 2;
+           T1.FATHERNAME = "sssssss";
+           // db.nodejs.Add(T1);
+            db.Entry(T1).State = System.Data.Entity.EntityState.Added;     //  insert  , delete , update 
+
+            db.SaveChanges();

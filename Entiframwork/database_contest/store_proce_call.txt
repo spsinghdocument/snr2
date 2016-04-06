@@ -1,0 +1,17 @@
+  public void store()
+        { 
+        
+           var db =new StudentDatabaseContext() ;
+           nodejs T1 = new nodejs();
+
+           SqlParameter FirstName = new SqlParameter("@FirstName", "first");
+           SqlParameter LastName = new SqlParameter("@LastName", "LastName");
+           SqlParameter MIDILENAME = new SqlParameter("@MIDILENAME", "MIDILENAME");
+           SqlParameter EMAIL = new SqlParameter("@EMAIL", "EMAIL");
+           SqlParameter MOBILENO = new SqlParameter("@MOBILENO", 18);
+           SqlParameter FATHERNAME = new SqlParameter("@FATHERNAME", "FATHERNAME");
+          // var department = db.Database.SqlQuery<nodejs>("exec nodjs_proc @FirstName, @LastName, @MIDILENAME, @EMAIL, @MOBILENO, @FATHERNAME", FirstName, LastName, MIDILENAME, EMAIL, MOBILENO, FATHERNAME).ToList<nodejs>();
+           // int departmentID = department.MOBILENO;
+           db.Database.ExecuteSqlCommand("nodjs_proc @FirstName, @LastName, @MIDILENAME, @EMAIL, @MOBILENO, @FATHERNAME", FirstName, LastName, MIDILENAME, EMAIL, MOBILENO, FATHERNAME);
+          // var table = db.Database.SqlQuery<nodejs>("nodjs_proc1").ToList<nodejs>();
+        }
